@@ -3,7 +3,7 @@ const express = require('express');
 const path = require('path');
 const serverless = require('serverless-http');
 const app = express();
-const bodyParser = require('body-parser');
+// const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const router = express.Router();
@@ -17,7 +17,7 @@ function customHeaders(req, res, next) {
 }
 
 router.get('/', (req, res) => {
-	res.send(`<h1>Running at ${port}</h1>`);
+	res.send(`<h1>Running at ${'999'}</h1>`);
 });
 router.get('/dok', (req, res) => {
 	res.send({ ok: 'ok' });
