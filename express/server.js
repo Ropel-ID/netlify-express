@@ -5,7 +5,11 @@ const serverless = require('serverless-http');
 const app = express();
 // const bodyParser = require('body-parser');
 const cors = require('cors');
-
+const akun = require('../routers/akun');
+const Profile = require('../routers/Profile');
+const alamat = require('../routers/alamat');
+const Laporan = require('../routers/Laporan');
+const Admin = require('../routers/admin/admin');
 const router = express.Router();
 app.use(cors());
 
@@ -15,7 +19,12 @@ function customHeaders(req, res, next) {
 	res.setHeader('X-Powered-By', 'ROPEL ID');
 	next();
 }
-
+app.use(alamat);
+app.use(akun);
+app.use(Profile);
+app.use(Laporan);
+app.use(Admin);
+app.use('/uploads', express.static('uploads'));
 router.get('/', (req, res) => {
 	res.send(`<h1>Running at ${'999'}</h1>`);
 });
