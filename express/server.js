@@ -19,11 +19,11 @@ function customHeaders(req, res, next) {
 	res.setHeader('X-Powered-By', 'ROPEL ID');
 	next();
 }
-app.use(alamat);
-app.use(akun);
-app.use(Profile);
-app.use(Laporan);
-app.use(Admin);
+app.use('/.netlify/functions/server', alamat);
+app.use('/.netlify/functions/server', akun);
+app.use('/.netlify/functions/server', Profile);
+app.use('/.netlify/functions/server', Laporan);
+app.use('/.netlify/functions/server', Admin);
 app.use('/uploads', express.static('uploads'));
 router.get('/', (req, res) => {
 	res.send(`<h1>Running at ${'999'}</h1>`);
