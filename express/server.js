@@ -19,12 +19,12 @@ function customHeaders(req, res, next) {
 	res.setHeader('X-Powered-By', 'ROPEL ID');
 	next();
 }
-app.use('/.netlify/functions/server', alamat);
-app.use('/.netlify/functions/server', akun);
-app.use('/.netlify/functions/server', Profile);
-app.use('/.netlify/functions/server', Laporan);
-app.use('/.netlify/functions/server', Admin);
-app.use('/uploads', express.static('uploads'));
+// app.use(alamat);
+// app.use(akun);
+// app.use(Profile);
+// app.use(Laporan);
+// app.use(Admin);
+// app.use('/uploads', express.static('uploads'));
 router.get('/', (req, res) => {
 	res.send(`<h1>Running at ${'999'}</h1>`);
 });
@@ -35,7 +35,7 @@ router.get('*', function(req, res) {
 	res.status(404).send('<h1>404</h1>');
 });
 
-app.use('/.netlify/functions/server', router); // path must route to lambda
+app.use(router); // path must route to lambda
 app.use('/', (req, res) => res.sendFile(path.join(__dirname, '../index.html')));
 app.use(customHeaders);
 app.use(express.json());
